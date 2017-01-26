@@ -1,3 +1,5 @@
+#react-truncate-html
+
 We all know how this goes: one day you’re just minding your own business, and then suddenly hear your content manager say ‘but we also want to use html in the summaries’, you yell out ‘why?!’ and shake your head in disbelief, sadly; the choice isn’t up to you.   
 Good news, luckily for you there’s `react-truncate-html`, which unlike `react-truncate` also supports html (who would’ve guessed, right?!)
 
@@ -13,10 +15,27 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Not very performance friendly:  [As the author of ellipsis.js mentions](https://github.com/glinford/ellipsis.js), having 100 elements with 100 lines is not an option, as it does some heavy computations.
 - Doesn't work on server side: we can't compute height and stuff on the server side, so passed HTML will be kept intact on server side. (but don't worry, rendering won't differ)
 
+##Installation
+
+```bash
+npm i react-truncate-html --save
+```
+
+```bash
+yarn add react-truncate-html
+```
+
+```bash
+whatever-new-package-manager-we-will-have-next-month install react-truncate-html
+```
+
+_etc..._
+
 ##Usage
 
 Simple example (truncate after 3 lines):
 ```
+import Truncate from 'react-html-truncate';
 <Truncate lines={3} dangerouslySetInnerHTML={{__html: “Hi, <strong>here’s some</strong> <i>HTML</i>”}}/>
 ```
 
