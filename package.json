@@ -1,14 +1,13 @@
 {
     "name": "react-truncate-html",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Truncate multiline HTML with React",
     "main": "index.js",
     "scripts": {
         "prepublish": "babel Truncate.js -o index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "dependencies": {
-        "babel": "^6.5.2",
+    "devDependencies": {
         "babel-cli": "^6.5.2",
         "babel-core": "^6.17.0",
         "babel-plugin-transform-class-properties": "^6.18.0",
