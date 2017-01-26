@@ -1,6 +1,6 @@
 {
     "name": "react-truncate-html",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Truncate multiline HTML with React",
     "main": "index.js",
     "scripts": {
@@ -19,7 +19,15 @@
     "peerDependencies": {
         "react": "^15.3.2"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jariz/react-truncate-html.git"
+    },
     "keywords": ["dotdotdot", "ellipsis", "shorten", "summarize", "react", "truncate", "html"],
     "author": "Jari Zwarts",
-    "license": "MIT"
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jariz/react-truncate-html/issues"
+    },
+    "homepage": "https://github.com/jariz/react-truncate-html#readme"
 }
