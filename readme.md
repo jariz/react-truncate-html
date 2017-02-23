@@ -35,7 +35,7 @@ _etc..._
 
 Simple example (truncate after 3 lines):
 ```
-import Truncate from 'react-html-truncate';
+import Truncate from 'react-truncate-html';
 <Truncate lines={3} dangerouslySetInnerHTML={{__html: “Hi, <strong>here’s some</strong> <i>HTML</i>”}}/>
 ```
 
