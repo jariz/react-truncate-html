@@ -1,10 +1,10 @@
 {
     "name": "react-truncate-html",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Truncate multiline HTML with React",
     "main": "index.js",
     "scripts": {
-        "prepublish": "babel Truncate.js -o index.js",
+        "prepublish": "(cat node_modules/babel-polyfill/dist/polyfill.min.js && babel Truncate.js) > index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
@@ -14,7 +14,8 @@
         "babel-plugin-transform-object-rest-spread": "^6.16.0",
         "babel-preset-es2015": "^6.16.0",
         "babel-preset-react": "^6.16.0",
-        "babel-preset-stage-0": "^6.16.0"
+        "babel-preset-stage-0": "^6.16.0",
+        "babel-polyfill": "^6.23.0"
     },
     "peerDependencies": {
         "react": "^15.3.2"
@@ -23,7 +24,15 @@
         "type": "git",
         "url": "git+https://github.com/jariz/react-truncate-html.git"
     },
-    "keywords": ["dotdotdot", "ellipsis", "shorten", "summarize", "react", "truncate", "html"],
+    "keywords": [
+        "dotdotdot",
+        "ellipsis",
+        "shorten",
+        "summarize",
+        "react",
+        "truncate",
+        "html"
+    ],
     "author": "Jari Zwarts",
     "license": "MIT",
     "bugs": {
