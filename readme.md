@@ -9,10 +9,14 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Pure JS, no weird css hacks
 - High configurability
 
+## WARNING
+**This component assumes the inputted HTML is sanitized**, if it's not, **react-truncate-html will execute potential malicious HTML**, leaving you with a [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting).  
+If the HTML comes from a non-trusted source (user-created), be sure to run it through a module like [sanitize-html](https://www.npmjs.com/package/sanitize-html) before passing it to react-truncate-html!
+
 ## Caveats
 
-- **No react children allowed!**  Because of the dom manipulation react-truncate-html does, it only supports html as a string. The only way to set it’s content is by passing dangerouslySetInnerHTML.
-- Not very performance friendly:  [As the author of ellipsis.js mentions](https://github.com/glinford/ellipsis.js), having 100 elements with 100 lines is not an option, as it does some heavy computations.
+- **No react children allowed!** Because of the dom manipulation react-truncate-html does, it only supports html as a string. The only way to set it’s content is by passing dangerouslySetInnerHTML. (see warning above, too)
+- Not very performance friendly: [As the author of ellipsis.js mentions](https://github.com/glinford/ellipsis.js), having 100 elements with 100 lines is not an option, as it does some heavy computations.
 - Doesn't work on server side: we can't compute height and stuff on the server side, so passed HTML will be kept intact on server side. (but don't worry, rendering won't differ)
 
 ## Installation
