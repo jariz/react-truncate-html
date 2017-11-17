@@ -39,9 +39,12 @@ class Truncate extends Component {
             console.error('react-truncate-html: We can\'t handle react children at the moment.\nYou\'re %crequired%c to pass dangerouslySetInnerHTML to set contents. Sorry!', 'font-style:italic', 'font-style:normal');
             return null;
         }
+        const { dangerouslySetInnerHTML } = this.props;
+        const { __html } = dangerouslySetInnerHTML;
+        const html = { __html: xss(__html) };
 
         return (
-            <span ref="paragraph" {...passedProps}/>
+            <span ref="paragraph" {...passedProps} dangerouslySetInnerHTML={html}/>
         );
     }
 
