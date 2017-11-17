@@ -4,18 +4,20 @@
  * react-truncate-html author: Jari Zwarts (https://jari.io/)
  */
 
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+
 const isServer = () => typeof window === 'undefined';
 
 class Truncate extends Component {
     static propTypes = {
-        ellipsis: React.PropTypes.string,
-        debounce: React.PropTypes.number,
-        responsive: React.PropTypes.bool,
-        lines: React.PropTypes.number,
-        portrait: React.PropTypes.number,
-        breakWord: React.PropTypes.bool
-    }
+        ellipsis: PropTypes.string,
+        debounce: PropTypes.number,
+        responsive: PropTypes.bool,
+        lines: PropTypes.number,
+        portrait: PropTypes.number,
+        breakWord: PropTypes.bool,
+    };
 
     static defaultProps = {
         ellipsis: '…',
@@ -23,43 +25,43 @@ class Truncate extends Component {
         responsive: true,
         lines: 2,
         portrait: null,
-        breakWord: true
-    }
+        breakWord: true,
+    };
 
-    render() {
+    render () {
         // pass any additional props to the paragraph element
-        const passedProps = {...this.props};
+        const passedProps = { ...this.props };
         for (let key of Object.keys(Truncate.propTypes)) {
             delete passedProps[key];
         }
-        
-        if(this.props.children) {
+
+        if (this.props.children) {
             console.error('react-truncate-html: We can\'t handle react children at the moment.\nYou\'re %crequired%c to pass dangerouslySetInnerHTML to set contents. Sorry!', 'font-style:italic', 'font-style:normal');
             return null;
         }
-        
+
         return (
             <span ref="paragraph" {...passedProps}/>
         );
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate (prevProps) {
         if (prevProps.dangerouslySetInnerHTML !== this.props.dangerouslySetInnerHTML) {
             this.cached = this.refs.paragraph.innerHTML;
             this.add();
         }
     }
 
-    componentDidMount() {
+    componentDidMount () {
         if (!isServer()) {
             this.lines = {
                 props: this.props,
-                get current() {
+                get current () {
                     if (this.props.portrait && window.innerHeight > window.innerWidth) {
                         return this.props.portrait;
                     }
                     return this.props.lines;
-                }
+                },
             };
 
             if (this.props.responsive) {
@@ -79,32 +81,32 @@ class Truncate extends Component {
             this.add();
         }
     }
-    
-    componentWillUnmount() {
-        if(this.props.responsive && this._listener) {
+
+    componentWillUnmount () {
+        if (this.props.responsive && this._listener) {
             window.removeEventListener('resize', this._listener, false);
         }
     }
 
     cached = null;
 
-    createProp(element) {
+    createProp (element) {
         this.prop = {
-            get height() {
+            get height () {
                 let viewportOffset = element.getBoundingClientRect();
                 return parseInt(viewportOffset.bottom - viewportOffset.top, 10);
             },
-            get lineheight() {
+            get lineheight () {
                 let lineh = getComputedStyle(element).getPropertyValue('line-height');
                 if (String('normal|initial|inherit').indexOf(lineh) > -1) { //very specific case
                     lineh = parseInt(getComputedStyle(element).getPropertyValue('font-size'), 10) + 2;
                 }
                 return parseInt(lineh, 10);
-            }
+            },
         };
     }
-    
-    add() {
+
+    add () {
         if (this.props.responsive) {
             if (this.refs.paragraph.innerHTML !== this.cached) {
                 this.refs.paragraph.innerHTML = this.cached;
@@ -122,7 +124,7 @@ class Truncate extends Component {
         }
     }
 
-    breakWord(str, str2, fix) {
+    breakWord (str, str2, fix) {
         let words = str.split(' ');
         words.pop();
         if (fix) {
@@ -147,7 +149,7 @@ class Truncate extends Component {
         }
     }
 
-    simpleText(element) {
+    simpleText (element) {
         let childText = element.childNodes[0].nodeValue;
         while (this.prop.height > (this.prop.lineheight * this.lines.current)) {
             element.childNodes[0].nodeValue = childText.slice(0, -1);
@@ -166,11 +168,11 @@ class Truncate extends Component {
         }
     }
 
-    isNotCorrect() {
+    isNotCorrect () {
         return this.prop.height > (this.prop.lineheight * this.lines.current);
     }
 
-    processBreak(dOne, dTwo, fix) {
+    processBreak (dOne, dTwo, fix) {
         let r = this.breakWord(dOne.innerHTML || dOne.nodeValue, dTwo.innerHTML || dTwo.nodeValue, fix);
         if (dOne.innerHTML) {
             dOne.innerHTML = r[0];
@@ -184,7 +186,7 @@ class Truncate extends Component {
         }
     }
 
-    handleChilds(e) {
+    handleChilds (e) {
         let domChilds = e.childNodes;
         let childText;
         for (let i = domChilds.length - 1; i >= 0; i--) {
@@ -192,7 +194,7 @@ class Truncate extends Component {
             if (domChilds[i].nodeType === 3) {
                 displayOrigin = domChilds[i].nodeValue;
                 domChilds[i].nodeValue = '';
-            } else if(domChilds[i].nodeType === 1) {
+            } else if (domChilds[i].nodeType === 1) {
                 displayOrigin = getComputedStyle(domChilds[i]).getPropertyValue('display');
                 domChilds[i].style.display = 'none';
             }
