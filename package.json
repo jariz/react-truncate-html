@@ -4,7 +4,7 @@
     "description": "Truncate multiline HTML with React",
     "main": "index.js",
     "scripts": {
-        "prepublish": "(cat node_modules/babel-polyfill/dist/polyfill.min.js && babel Truncate.js) > index.js",
+        "prepublish": "(babel Truncate.js) > index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
@@ -15,10 +15,10 @@
         "babel-preset-es2015": "^6.16.0",
         "babel-preset-react": "^6.16.0",
         "babel-preset-stage-0": "^6.16.0",
-        "babel-polyfill": "^6.23.0"
     },
     "peerDependencies": {
-        "react": "^15.3.2"
+        "react": "^15.3.2",
+        "prop-types": "^15.6.0"
     },
     "repository": {
         "type": "git",
@@ -38,5 +38,8 @@
     "bugs": {
         "url": "https://github.com/jariz/react-truncate-html/issues"
     },
-    "homepage": "https://github.com/jariz/react-truncate-html#readme"
+    "homepage": "https://github.com/jariz/react-truncate-html#readme",
+    "dependencies": {
+        "xss": "^0.3.4"
+    }
 }
