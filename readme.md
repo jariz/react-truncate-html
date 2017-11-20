@@ -9,9 +9,9 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Pure JS, no weird css hacks
 - High configurability
 
-## WARNING
-**This component assumes the inputted HTML is sanitized**, if it's not, **react-truncate-html will execute potential malicious HTML**, leaving you with a [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting).  
-If the HTML comes from a non-trusted source (user-created), be sure to run it through a module like [sanitize-html](https://www.npmjs.com/package/sanitize-html) before passing it to react-truncate-html!
+## Sanitizing
+Although you pass your html through `dangerouslySetInnerHTML`, `react-truncate-html` will sanitize input passed to it.  
+_Do keep in mind that RTH explicitly santizes input, other elements besides RTH **will not filter input when using `dangerouslySetInnerHTML`** and in that case, you are personally responsible for sanitizing input_
 
 ## Caveats
 
