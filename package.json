@@ -1,6 +1,6 @@
 {
     "name": "react-truncate-html",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Truncate multiline HTML with React",
     "main": "index.js",
     "scripts": {
