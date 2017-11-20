@@ -16,6 +16,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _xss = require('xss');
+
+var _xss2 = _interopRequireDefault(_xss);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -83,8 +87,12 @@ var Truncate = function (_Component) {
                 console.error('react-truncate-html: We can\'t handle react children at the moment.\nYou\'re %crequired%c to pass dangerouslySetInnerHTML to set contents. Sorry!', 'font-style:italic', 'font-style:normal');
                 return null;
             }
+            var dangerouslySetInnerHTML = this.props.dangerouslySetInnerHTML;
+            var __html = dangerouslySetInnerHTML.__html;
 
-            return _react2.default.createElement('span', _extends({ ref: 'paragraph' }, passedProps));
+            var html = { __html: (0, _xss2.default)(__html) };
+
+            return _react2.default.createElement('span', _extends({ ref: 'paragraph' }, passedProps, { dangerouslySetInnerHTML: html }));
         }
     }, {
         key: 'componentDidUpdate',
