@@ -9,6 +9,10 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Pure JS, no weird css hacks
 - High configurability
 
+# When to use `react-truncate-html`
+As mentioned above, **only use `react-truncate-html` when you want to truncate HTML**
+Use [`react-truncate`](https://www.npmjs.com/package/react-truncate) for everything else.
+
 ## Sanitizing
 Although you pass your html through `dangerouslySetInnerHTML`, `react-truncate-html` will sanitize input passed to it.  
 _Do keep in mind that RTH explicitly santizes input, other elements besides RTH **will not filter input when using `dangerouslySetInnerHTML`** and in that case, you are personally responsible for sanitizing input_
