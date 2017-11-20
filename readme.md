@@ -9,7 +9,7 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Pure JS, no weird css hacks
 - High configurability
 
-# When to use `react-truncate-html`
+## When to use `react-truncate-html`
 As mentioned above, **only use `react-truncate-html` when you want to truncate HTML**
 Use [`react-truncate`](https://www.npmjs.com/package/react-truncate) for everything else.
 
