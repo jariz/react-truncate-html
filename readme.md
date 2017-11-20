@@ -1,4 +1,4 @@
-#react-truncate-html
+# react-truncate-html
 
 We all know how this goes: one day you’re just minding your own business, and then suddenly hear your content manager say ‘but we also want to use html in the summaries’, you yell out ‘why?!’ and shake your head in disbelief, sadly; the choice isn’t up to you.   
 Good news, luckily for you there’s `react-truncate-html`, which unlike `react-truncate` also supports html (who would’ve guessed, right?!)
@@ -9,13 +9,17 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Pure JS, no weird css hacks
 - High configurability
 
-##Caveats
+## WARNING
+**This component assumes the inputted HTML is sanitized**, if it's not, **react-truncate-html will execute potential malicious HTML**, leaving you with a [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting).  
+If the HTML comes from a non-trusted source (user-created), be sure to run it through a module like [sanitize-html](https://www.npmjs.com/package/sanitize-html) before passing it to react-truncate-html!
 
-- **No react children allowed!**  Because of the dom manipulation react-truncate-html does, it only supports html as a string. The only way to set it’s content is by passing dangerouslySetInnerHTML.
-- Not very performance friendly:  [As the author of ellipsis.js mentions](https://github.com/glinford/ellipsis.js), having 100 elements with 100 lines is not an option, as it does some heavy computations.
+## Caveats
+
+- **No react children allowed!** Because of the dom manipulation react-truncate-html does, it only supports html as a string. The only way to set it’s content is by passing dangerouslySetInnerHTML. (see warning above, too)
+- Not very performance friendly: [As the author of ellipsis.js mentions](https://github.com/glinford/ellipsis.js), having 100 elements with 100 lines is not an option, as it does some heavy computations.
 - Doesn't work on server side: we can't compute height and stuff on the server side, so passed HTML will be kept intact on server side. (but don't worry, rendering won't differ)
 
-##Installation
+## Installation
 
 ```bash
 npm i react-truncate-html --save
@@ -31,7 +35,7 @@ whatever-new-package-manager-we-will-have-next-month install react-truncate-html
 
 _etc..._
 
-##Usage
+## Usage
 
 Simple example (truncate after 3 lines):
 ```
@@ -50,7 +54,7 @@ Complex example (don't listen for browser resizing events, don’t break words, 
     />
 ```
 
-##Available props
+## Available props
 
 | Name       | Type   | Default | Desc                                                                                                   |
 |------------|--------|---------|--------------------------------------------------------------------------------------------------------|
