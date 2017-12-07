@@ -42,20 +42,28 @@ _etc..._
 ## Usage
 
 Simple example (truncate after 3 lines):
-```
+```jsx
 import Truncate from 'react-truncate-html';
-<Truncate lines={3} dangerouslySetInnerHTML={{__html: “Hi, <strong>here’s some</strong> <i>HTML</i>”}}/>
+
+<Truncate
+ lines={3}
+ dangerouslySetInnerHTML={{
+  __html: "Hi, <strong>here’s some</strong> <i>HTML</i>"
+ }}
+/>
 ```
 
 Complex example (don't listen for browser resizing events, don’t break words, use 4 lines on portrait mode):
-```
+```jsx
 <Truncate 
-    lines={3} 
-    portrait={4} 
-    breakWord={false} 
-    responsive={false} 
-    dangerouslySetInnerHTML={{__html: “Hi, <strong>here’s some</strong> <i>HTML</i>”}}
-    />
+ lines={3} 
+ portrait={4} 
+ breakWord={false} 
+ responsive={false} 
+ dangerouslySetInnerHTML={{
+  __html: "Hi, <strong>here’s some</strong> <i>HTML</i>"
+ }}
+/>
 ```
 
 ## Available props
