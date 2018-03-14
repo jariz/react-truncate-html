@@ -1,6 +1,6 @@
 {
     "name": "react-truncate-html",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "Truncate multiline HTML with React",
     "main": "index.js",
     "scripts": {
@@ -17,7 +17,7 @@
         "babel-preset-stage-0": "^6.16.0"
     },
     "peerDependencies": {
-        "react": "^15.3.2",
+        "react": "^15.0.0 || ^16.0.0",
         "prop-types": "^15.6.0"
     },
     "repository": {
