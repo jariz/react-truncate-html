@@ -9,6 +9,10 @@ react-truncate-html is based on [ellipsis.js](https://github.com/glinford/ellips
 - Pure JS, no weird css hacks
 - High configurability
 
+## When to use `react-truncate-html`
+As mentioned above, **only use `react-truncate-html` when you want to truncate HTML**
+Use [`react-truncate`](https://www.npmjs.com/package/react-truncate) for everything else.
+
 ## Sanitizing
 Although you pass your html through `dangerouslySetInnerHTML`, `react-truncate-html` will sanitize input passed to it.  
 _Do keep in mind that RTH explicitly santizes input, other elements besides RTH **will not filter input when using `dangerouslySetInnerHTML`** and in that case, you are personally responsible for sanitizing input_
@@ -38,20 +42,28 @@ _etc..._
 ## Usage
 
 Simple example (truncate after 3 lines):
-```
+```jsx
 import Truncate from 'react-truncate-html';
-<Truncate lines={3} dangerouslySetInnerHTML={{__html: “Hi, <strong>here’s some</strong> <i>HTML</i>”}}/>
+
+<Truncate
+  lines={3}
+  dangerouslySetInnerHTML={{
+   __html: "Hi, <strong>here’s some</strong> <i>HTML</i>"
+  }}
+/>
 ```
 
 Complex example (don't listen for browser resizing events, don’t break words, use 4 lines on portrait mode):
-```
+```jsx
 <Truncate 
-    lines={3} 
-    portrait={4} 
-    breakWord={false} 
-    responsive={false} 
-    dangerouslySetInnerHTML={{__html: “Hi, <strong>here’s some</strong> <i>HTML</i>”}}
-    />
+  lines={3} 
+  portrait={4} 
+  breakWord={false} 
+  responsive={false} 
+  dangerouslySetInnerHTML={{
+    __html: "Hi, <strong>here’s some</strong> <i>HTML</i>"
+  }}
+/>
 ```
 
 ## Available props

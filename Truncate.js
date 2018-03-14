@@ -138,16 +138,16 @@ class Truncate extends Component {
             if (words[words.length - 1]) {
                 words[words.length - 1] = words[words.length - 1].replace(/(,$)/g, '').replace(/(\.$)/g, '');
             }
-            words.push(this.conf.ellipsis);
+            words.push(this.props.ellipsis);
             return words.join(' ');
         } else {
             if (words[words.length - 1]) {
                 words[words.length - 1] = words[words.length - 1].replace(/(,$)/g, '').replace(/(\.$)/g, '');
-                words.push(this.conf.ellipsis);
+                words.push(this.props.ellipsis);
                 return [words.join(' '), str2];
             } else if (!words[words.length - 1] && str2) {
                 let st = ' ' + str2.trim().replace(/(,$)/g, '').replace(/(\.$)/g, '') + ' ';
-                words.push(this.conf.ellipsis);
+                words.push(this.props.ellipsis);
                 return [words.join(' '), st];
             }
         }
