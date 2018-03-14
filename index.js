@@ -146,7 +146,7 @@ var Truncate = function (_Component) {
             this.prop = {
                 get height() {
                     var viewportOffset = element.getBoundingClientRect();
-                    return parseInt(viewportOffset.bottom - viewportOffset.top, 10);
+                    return parseInt(viewportOffset.bottom - viewportOffset.top - 1, 10);
                 },
                 get lineheight() {
                     var lineh = getComputedStyle(element).getPropertyValue('line-height');

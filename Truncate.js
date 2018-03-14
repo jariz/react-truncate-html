@@ -98,7 +98,7 @@ class Truncate extends Component {
         this.prop = {
             get height () {
                 let viewportOffset = element.getBoundingClientRect();
-                return parseInt(viewportOffset.bottom - viewportOffset.top, 10);
+                return parseInt(viewportOffset.bottom - viewportOffset.top - 1, 10);
             },
             get lineheight () {
                 let lineh = getComputedStyle(element).getPropertyValue('line-height');
