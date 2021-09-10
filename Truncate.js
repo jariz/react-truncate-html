@@ -29,6 +29,8 @@ class Truncate extends Component {
         breakWord: true,
     };
 
+    paragraph = React.createRef();
+
     render () {
         // pass any additional props to the paragraph element
         const passedProps = { ...this.props };
@@ -45,13 +47,13 @@ class Truncate extends Component {
         const html = { __html: xss(__html) };
 
         return (
-            <span ref="paragraph" {...passedProps} dangerouslySetInnerHTML={html}/>
+            <span ref={this.paragraph} {...passedProps} dangerouslySetInnerHTML={html}/>
         );
     }
 
     componentDidUpdate (prevProps) {
         if (prevProps.dangerouslySetInnerHTML !== this.props.dangerouslySetInnerHTML) {
-            this.cached = this.refs.paragraph.innerHTML;
+            this.cached = this.paragraph.current.innerHTML;
             this.add();
         }
     }
@@ -69,7 +71,7 @@ class Truncate extends Component {
             };
 
             if (this.props.responsive) {
-                this.cached = this.refs.paragraph.innerHTML;
+                this.cached = this.paragraph.current.innerHTML;
                 let debounce;
                 const listener = function () {
                     clearTimeout(debounce);
@@ -112,18 +114,18 @@ class Truncate extends Component {
 
     add () {
         if (this.props.responsive) {
-            if (this.refs.paragraph.innerHTML !== this.cached) {
-                this.refs.paragraph.innerHTML = this.cached;
+            if (this.paragraph.current.innerHTML !== this.cached) {
+                this.paragraph.current.innerHTML = this.cached;
             }
         }
 
-        this.createProp(this.refs.paragraph);
+        this.createProp(this.paragraph.current);
 
         if (this.isNotCorrect()) {
-            if (this.refs.paragraph.childNodes.length && this.refs.paragraph.childNodes.length > 1) {
-                this.handleChilds(this.refs.paragraph);
-            } else if (this.refs.paragraph.childNodes.length && this.refs.paragraph.childNodes.length === 1 && this.refs.paragraph.childNodes[0].nodeType === 3) {
-                this.simpleText(this.refs.paragraph);
+            if (this.paragraph.current.childNodes.length && this.paragraph.current.childNodes.length > 1) {
+                this.handleChilds(this.paragraph.current);
+            } else if (this.paragraph.current.childNodes.length && this.paragraph.current.childNodes.length === 1 && this.paragraph.current.childNodes[0].nodeType === 3) {
+                this.simpleText(this.paragraph.current);
             }
         }
     }
